@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ImplServiceService WSDL service -->
+
+  <service name="ImplService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.transmetro.com"/>
+      <parameter name="wsdlServiceElement" value="ImplServiceService"/>
+      <parameter name="schemaQualified" value="http://ws.transmetro.com,http://estructuras.transmetro.com"/>
+      <parameter name="wsdlServicePort" value="ImplService"/>
+      <parameter name="className" value="com.transmetro.ws.ImplService"/>
+      <parameter name="wsdlPortType" value="ImplService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://ws.transmetro.com" name="crearRuta" qname="operNS:crearRuta" soapAction="">
+        <parameter xmlns:pns="http://ws.transmetro.com" xmlns:tns="http://estructuras.transmetro.com" qname="pns:ruta" type="tns:Ruta"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.transmetro.com" name="crearChofer" qname="operNS:crearChofer" soapAction="">
+        <parameter xmlns:pns="http://ws.transmetro.com" xmlns:tns="http://estructuras.transmetro.com" qname="pns:chofer" type="tns:Chofer"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.transmetro.com" xmlns:retNS="http://ws.transmetro.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getGraphAVLAdmin" qname="operNS:getGraphAVLAdmin" returnQName="retNS:getGraphAVLAdminReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://ws.transmetro.com" xmlns:retNS="http://ws.transmetro.com" xmlns:rtns="http://estructuras.transmetro.com" name="getListaBuses" qname="operNS:getListaBuses" returnQName="retNS:getListaBusesReturn" returnType="rtns:ListaDoble" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://ws.transmetro.com" xmlns:retNS="http://ws.transmetro.com" xmlns:rtns="http://estructuras.transmetro.com" name="validaLogin" qname="operNS:validaLogin" returnQName="retNS:validaLoginReturn" returnType="rtns:Informacion" soapAction="">
+        <parameter xmlns:pns="http://ws.transmetro.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:string"/>
+        <parameter xmlns:pns="http://ws.transmetro.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pass" type="tns:string"/>
+        <parameter xmlns:pns="http://ws.transmetro.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:tipo" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.transmetro.com" name="crearEstacion" qname="operNS:crearEstacion" soapAction="">
+        <parameter xmlns:pns="http://ws.transmetro.com" xmlns:tns="http://estructuras.transmetro.com" qname="pns:estacion" type="tns:Estacion"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.transmetro.com" xmlns:retNS="http://ws.transmetro.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getChoferes" qname="operNS:getChoferes" returnQName="retNS:getChoferesReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://ws.transmetro.com" xmlns:retNS="http://ws.transmetro.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getEstaciones" qname="operNS:getEstaciones" returnQName="retNS:getEstacionesReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://ws.transmetro.com" name="crearAdmin" qname="operNS:crearAdmin" soapAction="">
+        <parameter xmlns:pns="http://ws.transmetro.com" xmlns:tns="http://estructuras.transmetro.com" qname="pns:admin" type="tns:Informacion"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.transmetro.com" xmlns:retNS="http://ws.transmetro.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="verAdmins" qname="operNS:verAdmins" returnQName="retNS:verAdminsReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://ws.transmetro.com" xmlns:retNS="http://ws.transmetro.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getRutas" qname="operNS:getRutas" returnQName="retNS:getRutasReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://ws.transmetro.com" name="crearBus" qname="operNS:crearBus" soapAction="">
+        <parameter xmlns:pns="http://ws.transmetro.com" xmlns:tns="http://estructuras.transmetro.com" qname="pns:bus" type="tns:Bus"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.transmetro.com" xmlns:retNS="http://ws.transmetro.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getBuses" qname="operNS:getBuses" returnQName="retNS:getBusesReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://ws.transmetro.com" xmlns:retNS="http://ws.transmetro.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getGraphAVLChofer" qname="operNS:getGraphAVLChofer" returnQName="retNS:getGraphAVLChoferReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="getChoferes verAdmins getBuses crearEstacion getListaBuses crearBus getGraphAVLChofer getEstaciones crearChofer getGraphAVLAdmin crearRuta validaLogin crearAdmin getRutas"/>
+
+      <typeMapping xmlns:ns="http://estructuras.transmetro.com" qname="ns:Chofer" type="java:com.transmetro.estructuras.Chofer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://estructuras.transmetro.com" qname="ns:ListaDobleBus" type="java:com.transmetro.estructuras.ListaDobleBus" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://estructuras.transmetro.com" qname="ns:Informacion" type="java:com.transmetro.estructuras.Informacion" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://estructuras.transmetro.com" qname="ns:NodoDobleBus" type="java:com.transmetro.estructuras.NodoDobleBus" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://estructuras.transmetro.com" qname="ns:ListaDoble" type="java:com.transmetro.estructuras.ListaDoble" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://estructuras.transmetro.com" qname="ns:Estacion" type="java:com.transmetro.estructuras.Estacion" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://estructuras.transmetro.com" qname="ns:DataBus" type="java:com.transmetro.estructuras.DataBus" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://estructuras.transmetro.com" qname="ns:NodoDoble" type="java:com.transmetro.estructuras.NodoDoble" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://estructuras.transmetro.com" qname="ns:Bus" type="java:com.transmetro.estructuras.Bus" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://estructuras.transmetro.com" qname="ns:Ruta" type="java:com.transmetro.estructuras.Ruta" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

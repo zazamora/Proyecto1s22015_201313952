@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.transmetro.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.transmetro.com" xmlns:intf="http://ws.transmetro.com" xmlns:tns1="http://estructuras.transmetro.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.transmetro.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://estructuras.transmetro.com"/>
+   <element name="crearRuta">
+    <complexType>
+     <sequence>
+      <element name="ruta" type="tns1:Ruta"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="crearRutaResponse">
+    <complexType/>
+   </element>
+   <element name="crearChofer">
+    <complexType>
+     <sequence>
+      <element name="chofer" type="tns1:Chofer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="crearChoferResponse">
+    <complexType/>
+   </element>
+   <element name="getGraphAVLAdmin">
+    <complexType/>
+   </element>
+   <element name="getGraphAVLAdminResponse">
+    <complexType>
+     <sequence>
+      <element name="getGraphAVLAdminReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getListaBuses">
+    <complexType/>
+   </element>
+   <element name="getListaBusesResponse">
+    <complexType>
+     <sequence>
+      <element name="getListaBusesReturn" type="tns1:ListaDoble"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="validaLogin">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:string"/>
+      <element name="pass" type="xsd:string"/>
+      <element name="tipo" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="validaLoginResponse">
+    <complexType>
+     <sequence>
+      <element name="validaLoginReturn" type="tns1:Informacion"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="crearEstacion">
+    <complexType>
+     <sequence>
+      <element name="estacion" type="tns1:Estacion"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="crearEstacionResponse">
+    <complexType/>
+   </element>
+   <element name="getChoferes">
+    <complexType/>
+   </element>
+   <element name="getChoferesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getChoferesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getEstaciones">
+    <complexType/>
+   </element>
+   <element name="getEstacionesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getEstacionesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="crearAdmin">
+    <complexType>
+     <sequence>
+      <element name="admin" type="tns1:Informacion"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="crearAdminResponse">
+    <complexType/>
+   </element>
+   <element name="verAdmins">
+    <complexType/>
+   </element>
+   <element name="verAdminsResponse">
+    <complexType>
+     <sequence>
+      <element name="verAdminsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getRutas">
+    <complexType/>
+   </element>
+   <element name="getRutasResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getRutasReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="crearBus">
+    <complexType>
+     <sequence>
+      <element name="bus" type="tns1:Bus"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="crearBusResponse">
+    <complexType/>
+   </element>
+   <element name="getBuses">
+    <complexType/>
+   </element>
+   <element name="getBusesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getBusesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getGraphAVLChofer">
+    <complexType/>
+   </element>
+   <element name="getGraphAVLChoferResponse">
+    <complexType>
+     <sequence>
+      <element name="getGraphAVLChoferReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://estructuras.transmetro.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="Ruta">
+    <sequence>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="DataBus">
+    <sequence>
+     <element name="estacion" nillable="true" type="xsd:string"/>
+     <element name="fecha" nillable="true" type="xsd:string"/>
+     <element name="idBus" nillable="true" type="xsd:string"/>
+     <element name="tiempoLlegada" nillable="true" type="xsd:string"/>
+     <element name="tiempoSalida" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="NodoDobleBus">
+    <sequence>
+     <element name="anterior" nillable="true" type="tns1:NodoDobleBus"/>
+     <element name="datos" nillable="true" type="tns1:DataBus"/>
+     <element name="siguiente" nillable="true" type="tns1:NodoDobleBus"/>
+    </sequence>
+   </complexType>
+   <complexType name="ListaDobleBus">
+    <sequence>
+     <element name="primero" nillable="true" type="tns1:NodoDobleBus"/>
+    </sequence>
+   </complexType>
+   <complexType name="Chofer">
+    <sequence>
+     <element name="apellido" nillable="true" type="xsd:string"/>
+     <element name="clave" type="xsd:int"/>
+     <element name="contrasena" nillable="true" type="xsd:string"/>
+     <element name="listaBuses" nillable="true" type="tns1:ListaDobleBus"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Bus">
+    <sequence>
+     <element name="claveChofer" type="xsd:int"/>
+     <element name="fecha" nillable="true" type="xsd:string"/>
+     <element name="horarioFin" nillable="true" type="xsd:string"/>
+     <element name="horarioInicio" nillable="true" type="xsd:string"/>
+     <element name="id" nillable="true" type="xsd:string"/>
+     <element name="ruta" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="NodoDoble">
+    <sequence>
+     <element name="anterior" nillable="true" type="tns1:NodoDoble"/>
+     <element name="datos" nillable="true" type="tns1:Bus"/>
+     <element name="siguiente" nillable="true" type="tns1:NodoDoble"/>
+    </sequence>
+   </complexType>
+   <complexType name="ListaDoble">
+    <sequence>
+     <element name="primero" nillable="true" type="tns1:NodoDoble"/>
+    </sequence>
+   </complexType>
+   <complexType name="Estacion">
+    <sequence>
+     <element name="horaLlegada" nillable="true" type="xsd:string"/>
+     <element name="id" nillable="true" type="xsd:string"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+     <element name="nuevo" type="xsd:boolean"/>
+     <element name="pass" nillable="true" type="xsd:string"/>
+     <element name="pcargadas" type="xsd:int"/>
+     <element name="personas" type="xsd:int"/>
+     <element name="psistema" type="xsd:int"/>
+     <element name="tipo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Informacion">
+    <sequence>
+     <element name="apellido" nillable="true" type="xsd:string"/>
+     <element name="chofer" nillable="true" type="tns1:Chofer"/>
+     <element name="clave" nillable="true" type="xsd:string"/>
+     <element name="comparable" nillable="true" type="xsd:string"/>
+     <element name="contrasena" nillable="true" type="xsd:string"/>
+     <element name="correo" nillable="true" type="xsd:string"/>
+     <element name="estacion" nillable="true" type="tns1:Estacion"/>
+     <element name="id" type="xsd:int"/>
+     <element name="mensaje" nillable="true" type="xsd:string"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="verAdminsResponse">
+
+      <wsdl:part element="impl:verAdminsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="validaLoginResponse">
+
+      <wsdl:part element="impl:validaLoginResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="crearRutaResponse">
+
+      <wsdl:part element="impl:crearRutaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getGraphAVLAdminResponse">
+
+      <wsdl:part element="impl:getGraphAVLAdminResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="crearRutaRequest">
+
+      <wsdl:part element="impl:crearRuta" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRutasRequest">
+
+      <wsdl:part element="impl:getRutas" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getGraphAVLChoferRequest">
+
+      <wsdl:part element="impl:getGraphAVLChofer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="crearChoferResponse">
+
+      <wsdl:part element="impl:crearChoferResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBusesResponse">
+
+      <wsdl:part element="impl:getBusesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEstacionesResponse">
+
+      <wsdl:part element="impl:getEstacionesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getGraphAVLAdminRequest">
+
+      <wsdl:part element="impl:getGraphAVLAdmin" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="crearBusResponse">
+
+      <wsdl:part element="impl:crearBusResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="crearChoferRequest">
+
+      <wsdl:part element="impl:crearChofer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="validaLoginRequest">
+
+      <wsdl:part element="impl:validaLogin" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBusesRequest">
+
+      <wsdl:part element="impl:getBuses" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getChoferesResponse">
+
+      <wsdl:part element="impl:getChoferesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="verAdminsRequest">
+
+      <wsdl:part element="impl:verAdmins" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getGraphAVLChoferResponse">
+
+      <wsdl:part element="impl:getGraphAVLChoferResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="crearEstacionResponse">
+
+      <wsdl:part element="impl:crearEstacionResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRutasResponse">
+
+      <wsdl:part element="impl:getRutasResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="crearEstacionRequest">
+
+      <wsdl:part element="impl:crearEstacion" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListaBusesRequest">
+
+      <wsdl:part element="impl:getListaBuses" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getChoferesRequest">
+
+      <wsdl:part element="impl:getChoferes" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="crearAdminRequest">
+
+      <wsdl:part element="impl:crearAdmin" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListaBusesResponse">
+
+      <wsdl:part element="impl:getListaBusesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEstacionesRequest">
+
+      <wsdl:part element="impl:getEstaciones" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="crearAdminResponse">
+
+      <wsdl:part element="impl:crearAdminResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="crearBusRequest">
+
+      <wsdl:part element="impl:crearBus" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ImplService">
+
+      <wsdl:operation name="crearRuta">
+
+         <wsdl:input message="impl:crearRutaRequest" name="crearRutaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:crearRutaResponse" name="crearRutaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="crearChofer">
+
+         <wsdl:input message="impl:crearChoferRequest" name="crearChoferRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:crearChoferResponse" name="crearChoferResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGraphAVLAdmin">
+
+         <wsdl:input message="impl:getGraphAVLAdminRequest" name="getGraphAVLAdminRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getGraphAVLAdminResponse" name="getGraphAVLAdminResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getListaBuses">
+
+         <wsdl:input message="impl:getListaBusesRequest" name="getListaBusesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getListaBusesResponse" name="getListaBusesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validaLogin">
+
+         <wsdl:input message="impl:validaLoginRequest" name="validaLoginRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:validaLoginResponse" name="validaLoginResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="crearEstacion">
+
+         <wsdl:input message="impl:crearEstacionRequest" name="crearEstacionRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:crearEstacionResponse" name="crearEstacionResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getChoferes">
+
+         <wsdl:input message="impl:getChoferesRequest" name="getChoferesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getChoferesResponse" name="getChoferesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEstaciones">
+
+         <wsdl:input message="impl:getEstacionesRequest" name="getEstacionesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getEstacionesResponse" name="getEstacionesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="crearAdmin">
+
+         <wsdl:input message="impl:crearAdminRequest" name="crearAdminRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:crearAdminResponse" name="crearAdminResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="verAdmins">
+
+         <wsdl:input message="impl:verAdminsRequest" name="verAdminsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:verAdminsResponse" name="verAdminsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRutas">
+
+         <wsdl:input message="impl:getRutasRequest" name="getRutasRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getRutasResponse" name="getRutasResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="crearBus">
+
+         <wsdl:input message="impl:crearBusRequest" name="crearBusRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:crearBusResponse" name="crearBusResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBuses">
+
+         <wsdl:input message="impl:getBusesRequest" name="getBusesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getBusesResponse" name="getBusesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGraphAVLChofer">
+
+         <wsdl:input message="impl:getGraphAVLChoferRequest" name="getGraphAVLChoferRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getGraphAVLChoferResponse" name="getGraphAVLChoferResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ImplServiceSoapBinding" type="impl:ImplService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="crearRuta">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="crearRutaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="crearRutaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="crearChofer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="crearChoferRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="crearChoferResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGraphAVLAdmin">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getGraphAVLAdminRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getGraphAVLAdminResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getListaBuses">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getListaBusesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getListaBusesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validaLogin">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="validaLoginRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="validaLoginResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="crearEstacion">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="crearEstacionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="crearEstacionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getChoferes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getChoferesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getChoferesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEstaciones">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getEstacionesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getEstacionesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="crearAdmin">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="crearAdminRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="crearAdminResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="verAdmins">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="verAdminsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="verAdminsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRutas">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRutasRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRutasResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="crearBus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="crearBusRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="crearBusResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBuses">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBusesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBusesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getGraphAVLChofer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getGraphAVLChoferRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getGraphAVLChoferResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ImplServiceService">
+
+      <wsdl:port binding="impl:ImplServiceSoapBinding" name="ImplService">
+
+         <wsdlsoap:address location="http://localhost:8081/WServiceTransmetro/services/ImplService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

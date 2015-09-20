@@ -1,0 +1,16 @@
+#Sun Sep 20 14:23:51 CST 2015
+eclipse.preferences.version=1
+encoding//src/com/transmetro/estructuras/Bus.java=UTF-8
+encoding//src/com/transmetro/estructuras/Chofer.java=UTF-8
+encoding//src/com/transmetro/estructuras/DataBus.java=UTF-8
+encoding//src/com/transmetro/estructuras/Estacion.java=UTF-8
+encoding//src/com/transmetro/estructuras/Informacion.java=UTF-8
+encoding//src/com/transmetro/estructuras/ListaDoble.java=UTF-8
+encoding//src/com/transmetro/estructuras/ListaDobleBus.java=UTF-8
+encoding//src/com/transmetro/estructuras/NodoDoble.java=UTF-8
+encoding//src/com/transmetro/estructuras/NodoDobleBus.java=UTF-8
+encoding//src/com/transmetro/estructuras/Ruta.java=UTF-8
+encoding//src/com/transmetro/ws/ImplService.java=UTF-8
+encoding//src/com/transmetro/ws/ImplServiceService.java=UTF-8
+encoding//src/com/transmetro/ws/ImplServiceServiceLocator.java=UTF-8
+encoding//src/com/transmetro/ws/ImplServiceSoapBindingStub.java=UTF-8

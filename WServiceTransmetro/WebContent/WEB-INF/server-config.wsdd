@@ -1,0 +1,100 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\Saul\Documents\eclipse\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\WServiceTransmetro\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="ImplService" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="crearRuta" qname="ns1:crearRuta" soapAction="" xmlns:ns1="http://ws.transmetro.com" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns3:parameter qname="ns1:ruta" type="ns2:Ruta" xmlns:ns2="http://estructuras.transmetro.com" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+  </ns2:operation>
+  <ns1:operation name="crearChofer" qname="ns3:crearChofer" soapAction="" xmlns:ns3="http://ws.transmetro.com">
+   <ns1:parameter qname="ns3:chofer" type="ns4:Chofer" xmlns:ns4="http://estructuras.transmetro.com"/>
+  </ns1:operation>
+  <ns1:operation name="getGraphAVLAdmin" qname="ns5:getGraphAVLAdmin" returnQName="ns5:getGraphAVLAdminReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://ws.transmetro.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getListaBuses" qname="ns6:getListaBuses" returnQName="ns6:getListaBusesReturn" returnType="ns7:ListaDoble" soapAction="" xmlns:ns6="http://ws.transmetro.com" xmlns:ns7="http://estructuras.transmetro.com"/>
+  <ns1:operation name="validaLogin" qname="ns8:validaLogin" returnQName="ns8:validaLoginReturn" returnType="ns9:Informacion" soapAction="" xmlns:ns8="http://ws.transmetro.com" xmlns:ns9="http://estructuras.transmetro.com">
+   <ns1:parameter qname="ns8:id" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns8:pass" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns8:tipo" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="crearEstacion" qname="ns10:crearEstacion" soapAction="" xmlns:ns10="http://ws.transmetro.com">
+   <ns1:parameter qname="ns10:estacion" type="ns11:Estacion" xmlns:ns11="http://estructuras.transmetro.com"/>
+  </ns1:operation>
+  <ns1:operation name="getChoferes" qname="ns12:getChoferes" returnQName="ns12:getChoferesReturn" returnType="xsd:string" soapAction="" xmlns:ns12="http://ws.transmetro.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getEstaciones" qname="ns13:getEstaciones" returnQName="ns13:getEstacionesReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://ws.transmetro.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="crearAdmin" qname="ns14:crearAdmin" soapAction="" xmlns:ns14="http://ws.transmetro.com">
+   <ns1:parameter qname="ns14:admin" type="ns15:Informacion" xmlns:ns15="http://estructuras.transmetro.com"/>
+  </ns1:operation>
+  <ns1:operation name="verAdmins" qname="ns16:verAdmins" returnQName="ns16:verAdminsReturn" returnType="xsd:string" soapAction="" xmlns:ns16="http://ws.transmetro.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getRutas" qname="ns17:getRutas" returnQName="ns17:getRutasReturn" returnType="xsd:string" soapAction="" xmlns:ns17="http://ws.transmetro.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="crearBus" qname="ns18:crearBus" soapAction="" xmlns:ns18="http://ws.transmetro.com">
+   <ns1:parameter qname="ns18:bus" type="ns19:Bus" xmlns:ns19="http://estructuras.transmetro.com"/>
+  </ns1:operation>
+  <ns1:operation name="getBuses" qname="ns20:getBuses" returnQName="ns20:getBusesReturn" returnType="xsd:string" soapAction="" xmlns:ns20="http://ws.transmetro.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getGraphAVLChofer" qname="ns21:getGraphAVLChofer" returnQName="ns21:getGraphAVLChoferReturn" returnType="xsd:string" soapAction="" xmlns:ns21="http://ws.transmetro.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="allowedMethods" value="getChoferes verAdmins getBuses crearEstacion getListaBuses crearBus getGraphAVLChofer getEstaciones crearChofer getGraphAVLAdmin crearRuta validaLogin crearAdmin getRutas"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="ImplService"/>
+  <ns1:parameter name="className" value="com.transmetro.ws.ImplService"/>
+  <ns1:parameter name="wsdlServicePort" value="ImplService"/>
+  <ns1:parameter name="schemaQualified" value="http://ws.transmetro.com,http://estructuras.transmetro.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://ws.transmetro.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="ImplServiceService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns22:Chofer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.transmetro.estructuras.Chofer" xmlns:ns22="http://estructuras.transmetro.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns23:ListaDobleBus" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.transmetro.estructuras.ListaDobleBus" xmlns:ns23="http://estructuras.transmetro.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns24:Informacion" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.transmetro.estructuras.Informacion" xmlns:ns24="http://estructuras.transmetro.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns25:NodoDobleBus" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.transmetro.estructuras.NodoDobleBus" xmlns:ns25="http://estructuras.transmetro.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns26:ListaDoble" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.transmetro.estructuras.ListaDoble" xmlns:ns26="http://estructuras.transmetro.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns27:Estacion" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.transmetro.estructuras.Estacion" xmlns:ns27="http://estructuras.transmetro.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns28:DataBus" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.transmetro.estructuras.DataBus" xmlns:ns28="http://estructuras.transmetro.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns29:NodoDoble" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.transmetro.estructuras.NodoDoble" xmlns:ns29="http://estructuras.transmetro.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns30:Bus" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.transmetro.estructuras.Bus" xmlns:ns30="http://estructuras.transmetro.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns31:Ruta" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.transmetro.estructuras.Ruta" xmlns:ns31="http://estructuras.transmetro.com"/>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>
